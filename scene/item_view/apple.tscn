@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://2wng0x15x04b"]
+
+[ext_resource type="Texture2D" uid="uid://qyrr2wl3pf6m" path="res://assets/images/apple.png" id="1_bg20w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1xgyw"]
+font_size = 32
+
+[node name="Apple" type="Control" unique_id=160392133]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Apple" type="Sprite2D" parent="." unique_id=913220785]
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("1_bg20w")
+
+[node name="Label" type="Label" parent="." unique_id=1719678175]
+layout_mode = 0
+offset_left = 23.0
+offset_top = -20.0
+offset_right = 95.0
+offset_bottom = 25.0
+text = "リンゴ"
+label_settings = SubResource("LabelSettings_1xgyw")

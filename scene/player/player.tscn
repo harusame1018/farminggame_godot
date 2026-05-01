@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://2xua13xjy2ql"]
+
+[ext_resource type="Script" uid="uid://sqd33yf0hhqw" path="res://scene/player/player.gd" id="1_v7pse"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7pse"]
+size = Vector2(52, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cm2cf"]
+size = Vector2(62, 63)
+
+[node name="player" type="CharacterBody2D" unique_id=891252540 groups=["player"]]
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_v7pse")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1638209530]
+shape = SubResource("RectangleShape2D_v7pse")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=219651136]
+offset_left = -26.0
+offset_top = -22.0
+offset_right = 26.0
+offset_bottom = 22.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1399842791]
+
+[node name="Control" type="Control" parent="." unique_id=780521741]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="cantake" type="VBoxContainer" parent="Control" unique_id=477143713]
+layout_mode = 0
+offset_left = 129.0
+offset_top = -79.0
+offset_right = 169.0
+offset_bottom = -39.0
+theme_override_constants/separation = 40
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1446198666]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=492234459]
+shape = SubResource("RectangleShape2D_cm2cf")

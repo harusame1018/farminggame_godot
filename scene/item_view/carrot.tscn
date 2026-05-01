@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dgy7hjvnt6yn5"]
+
+[ext_resource type="Texture2D" uid="uid://y613l54d4tku" path="res://assets/images/carrot.png" id="1_wya8h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6o0s7"]
+font_size = 32
+
+[node name="Control" type="Control" unique_id=412497749]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Apple" type="Sprite2D" parent="." unique_id=185197739]
+position = Vector2(4.625, 3.875)
+scale = Vector2(0.12299999, 0.121)
+texture = ExtResource("1_wya8h")
+
+[node name="Label" type="Label" parent="." unique_id=2132985874]
+layout_mode = 0
+offset_left = 23.0
+offset_top = -20.0
+offset_right = 95.0
+offset_bottom = 25.0
+text = "人参"
+label_settings = SubResource("LabelSettings_6o0s7")
