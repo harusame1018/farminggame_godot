@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="farming_godot"
-run/main_scene="res://scene/game/game.tscn"
+run/main_scene="uid://disd5wdjf1mhj"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*uid://qlat5hf6iltl"
 
 [global_group]
 

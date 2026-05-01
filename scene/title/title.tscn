@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://disd5wdjf1mhj"]
+
+[ext_resource type="Script" uid="uid://ciuv2k12lrntm" path="res://scene/title/title.gd" id="1_b1rhm"]
+
+[node name="title" type="Control" unique_id=519293641]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_b1rhm")
+
+[node name="seed" type="LineEdit" parent="." unique_id=24020692]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 296.0
+offset_right = 557.5
+offset_bottom = 327.0
+placeholder_text = "seed"
+
+[node name="Button" type="Button" parent="." unique_id=1417435881]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 353.0
+offset_right = 548.0
+offset_bottom = 384.0
+text = "go"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
