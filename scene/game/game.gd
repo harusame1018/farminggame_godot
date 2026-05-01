@@ -27,7 +27,7 @@ func _ready() -> void:
 			for ponds_y in range(ponds[1].size()):
 				for ponds_x in range(ponds[1][ponds_y].size()):
 					var gy = pond_pos.y + ponds_y
-					var gx = pond_pos.xs + ponds_x
+					var gx = pond_pos.x + ponds_x
 					grid[gy][gx] = ponds[1][ponds_y][ponds_x]
 	for map_y in range(grid.size()):
 		for map_x in range(grid[map_y].size()):
