@@ -16,6 +16,7 @@ offset_top = 296.0
 offset_right = 557.5
 offset_bottom = 327.0
 placeholder_text = "seed"
+virtual_keyboard_type = 2
 
 [node name="Button" type="Button" parent="." unique_id=1417435881]
 layout_mode = 0

@@ -19,3 +19,11 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.emit_signal("exclude_to_take","apple")
+
+func save():
+	var save_dict = {
+		"filename":get_scene_file_path(),
+		"pos_x": global_position.x,
+		"pos_y": global_position.y
+	}
+	return save_dict

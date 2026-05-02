@@ -22,6 +22,7 @@ Global="*uid://qlat5hf6iltl"
 [global_group]
 
 player=""
+persist=""
 
 [input]
 

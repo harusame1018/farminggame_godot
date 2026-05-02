@@ -29,3 +29,28 @@ position = Vector2(164, 84)
 position = Vector2(-89, 193)
 
 [node name="player" parent="." unique_id=891252540 instance=ExtResource("1_8xedm")]
+
+[node name="saveandload" type="Control" parent="player" unique_id=986625262]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="save" type="Button" parent="player/saveandload" unique_id=1036870393]
+layout_mode = 0
+offset_left = 335.0
+offset_top = -290.0
+offset_right = 543.0
+offset_bottom = -205.0
+text = "save"
+
+[node name="load" type="Button" parent="player/saveandload" unique_id=91017512]
+layout_mode = 0
+offset_left = 118.0
+offset_top = -292.0
+offset_right = 252.0
+offset_bottom = -207.0
+text = "load"
+
+[connection signal="pressed" from="player/saveandload/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="player/saveandload/load" to="." method="_on_load_pressed"]

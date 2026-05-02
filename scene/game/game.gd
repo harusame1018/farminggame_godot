@@ -1,5 +1,6 @@
 extends Node2D
 
+var load_count = 0
 var grid = []
 var ponds = {
 	0: [
@@ -21,6 +22,12 @@ var ponds = {
 		[0,0,0,0,0,0],
 		[1,1,0,0,0,1],
 		[0,1,1,1,1,1]
+	],
+	3: [
+		[0,1,0,1,0,0],
+		[0,0,0,0,0,0],
+		[1,1,0,0,0,1],
+		[0,1,1,0,1,0]
 	]
 }
 # Called when the node enters the scene tree for the first time.
@@ -29,32 +36,76 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 func _enter_tree() -> void:
-	seed(Global.seed)
 	init_game()
 func init_game():
+	seed(Global.seed)
+	print(Global.seed)
+	grid = []
 	for y in range(32):
 		grid.append([])
 		for x in range(32):
 			grid[y].append(1)
-	print(grid)
 	var number_of_pond = int(randi_range(1,ponds.size()))
-	print(number_of_pond)
 	for i in range(number_of_pond):
 		var pond_pos = Vector2i(clamp(randi_range(0,grid.size()),0,grid.size() - (ponds[i][0].size() + 1)),clamp(randi_range(0,grid[0].size()),0,grid[0].size() - (ponds[i].size() + 1)))
-		print(pond_pos)
 		for ponds_y in range(ponds[i].size()):
 			for ponds_x in range(ponds[i][ponds_y].size()):
 				var gy = pond_pos.y + ponds_y
 				var gx = pond_pos.x + ponds_x
-				grid[gy][gx] = ponds[i][ponds_y][ponds_x]
+				if gy <= grid.size() and gx <= grid[0].size() and ponds_y <= ponds[i].size() and ponds_x <= ponds[i][ponds_y].size():
+					grid[gy][gx] = ponds[i][ponds_y][ponds_x]
 	for map_y in range(grid.size()):
 		for map_x in range(grid[map_y].size()):
-			print(map_y,",",map_x)
 			var cell_pos = Vector2i(map_x,map_y)
 			match grid[map_y][map_x]:
 				0:
 					$ground.set_cell(cell_pos,1,Vector2i(1,0))
 				1:
 					$ground.set_cell(cell_pos,1,Vector2i(0,0))
-			print(cell_pos)
-	print(grid)
+func save_game():
+	var save_file = FileAccess.open("user://savegame.save",FileAccess.WRITE)
+	var save_nodes = get_tree().get_nodes_in_group("persist")
+	for node in save_nodes:
+		if node.scene_file_path.is_empty():
+			continue
+		if !node.has_method("save"):
+			continue
+		var node_data = node.call("save")
+		var json_string = JSON.stringify(node_data)
+		save_file.store_line(json_string)
+
+
+
+func load_game():
+	load_count = 0
+	if not FileAccess.file_exists("user://savegame.save"):
+		return
+	var save_nodes = get_tree().get_nodes_in_group("persist")
+	for i in save_nodes:
+		i.queue_free()
+	var save_file = FileAccess.open("user://savegame.save",FileAccess.READ)
+	while save_file.get_position() < save_file.get_length():
+		var json_string = save_file.get_line()
+		var json = JSON.new()
+		
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			continue
+		var node_data = json.data
+		print(typeof(node_data))
+		var new_objects = load(node_data["filename"]).instantiate()
+		add_child(new_objects)
+		new_objects.global_position = Vector2(node_data["pos_x"],node_data["pos_y"])
+		for i in node_data.keys():
+			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
+				continue
+			new_objects.set(i,node_data[i])
+		if "seed" in node_data:
+			Global.seed = int(node_data["seed"])
+			seed(int(node_data["seed"]))
+			if load_count == 0:
+				init_game()
+				load_count += 1
+			continue
+		
+		

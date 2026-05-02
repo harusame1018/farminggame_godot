@@ -8,7 +8,7 @@ size = Vector2(52, 44)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cm2cf"]
 size = Vector2(62, 63)
 
-[node name="player" type="CharacterBody2D" unique_id=891252540 groups=["player"]]
+[node name="player" type="CharacterBody2D" unique_id=891252540 groups=["persist", "player"]]
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_v7pse")
@@ -42,3 +42,25 @@ theme_override_constants/separation = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=492234459]
 shape = SubResource("RectangleShape2D_cm2cf")
+
+[node name="saveandload" type="Control" parent="." unique_id=17021910]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="save" type="Button" parent="saveandload" unique_id=1067494939]
+layout_mode = 0
+offset_left = 335.0
+offset_top = -290.0
+offset_right = 543.0
+offset_bottom = -205.0
+text = "save"
+
+[node name="load" type="Button" parent="saveandload" unique_id=20603217]
+layout_mode = 0
+offset_left = 118.0
+offset_top = -292.0
+offset_right = 252.0
+offset_bottom = -207.0
+text = "load"

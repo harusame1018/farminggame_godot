@@ -17,6 +17,8 @@ var cantake_vegetables = []
 func _ready() -> void:
 	ready_to_take.connect(cantake)
 	exclude_to_take.connect(exclude_take)
+	$saveandload/save.pressed.connect($"/root/game".save_game)
+	$saveandload/load.pressed.connect($"/root/game".load_game)
 	
 	inventory.resize(50)
 	inventory.fill("empty")
@@ -66,3 +68,13 @@ func exclude_cantake_vegetables(obj):
 			cantakeobj.queue_free()
 			print(cantake_vegetables)
 			return
+
+func save():
+	var save_dict = {
+		"filename":get_scene_file_path(),
+		"pos_x":global_position.x,
+		"pos_y":global_position.y,
+		"seed":Global.seed
+	}
+	return save_dict
+	
