@@ -17,8 +17,8 @@ var cantake_vegetables = []
 func _ready() -> void:
 	ready_to_take.connect(cantake)
 	exclude_to_take.connect(exclude_take)
-	$saveandload/save.pressed.connect($"/root/game".save_game)
-	$saveandload/load.pressed.connect($"/root/game".load_game)
+	$save_load/save.pressed.connect($"/root/game".save_game)
+	$save_load/load.pressed.connect($"/root/game".load_game)
 	
 	inventory.resize(50)
 	inventory.fill("empty")

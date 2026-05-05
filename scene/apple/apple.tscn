@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_h47li"]
 radius = 43.737854
 
-[node name="apple" type="Area2D" unique_id=1094652221]
+[node name="apple" type="Area2D" unique_id=1094652221 groups=["persist"]]
 script = ExtResource("1_h47li")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=242095011]

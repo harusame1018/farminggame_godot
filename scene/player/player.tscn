@@ -43,13 +43,13 @@ theme_override_constants/separation = 40
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=492234459]
 shape = SubResource("RectangleShape2D_cm2cf")
 
-[node name="saveandload" type="Control" parent="." unique_id=17021910]
+[node name="save_load" type="Control" parent="." unique_id=17021910]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="save" type="Button" parent="saveandload" unique_id=1067494939]
+[node name="save" type="Button" parent="save_load" unique_id=1067494939]
 layout_mode = 0
 offset_left = 335.0
 offset_top = -290.0
@@ -57,7 +57,7 @@ offset_right = 543.0
 offset_bottom = -205.0
 text = "save"
 
-[node name="load" type="Button" parent="saveandload" unique_id=20603217]
+[node name="load" type="Button" parent="save_load" unique_id=20603217]
 layout_mode = 0
 offset_left = 118.0
 offset_top = -292.0

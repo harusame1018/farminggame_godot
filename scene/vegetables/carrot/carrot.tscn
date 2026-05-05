@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://da4bbrnqkiv3q" path="res://scene/vegetables/carrot/carrot.gd" id="1_8h30n"]
 [ext_resource type="Texture2D" uid="uid://y613l54d4tku" path="res://assets/images/carrot.png" id="1_xiogs"]
+[ext_resource type="Texture2D" uid="uid://be7v6ass6krq7" path="res://assets/images/carrot-seed.png" id="2_8h30n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8h30n"]
 radius = 35.0
@@ -9,11 +10,12 @@ height = 110.0
 
 [node name="carrot" type="Area2D" unique_id=1684976049 groups=["persist"]]
 script = ExtResource("1_8h30n")
+growing_image = ExtResource("1_xiogs")
 
 [node name="Carrot" type="Sprite2D" parent="." unique_id=1007168868]
 position = Vector2(-3.8146973e-06, -1.9999924)
 scale = Vector2(0.544, 0.496)
-texture = ExtResource("1_xiogs")
+texture = ExtResource("2_8h30n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=17367774]
 shape = SubResource("CapsuleShape2D_8h30n")

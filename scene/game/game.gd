@@ -41,19 +41,22 @@ func init_game():
 	seed(Global.seed)
 	print(Global.seed)
 	grid = []
-	for y in range(32):
+	for y in range(128):
 		grid.append([])
-		for x in range(32):
+		for x in range(128):
 			grid[y].append(1)
-	var number_of_pond = int(randi_range(1,ponds.size()))
+	var number_of_pond = int(randi_range(1,grid[0].size() / ponds[0].size()))
+	print(number_of_pond)
 	for i in range(number_of_pond):
-		var pond_pos = Vector2i(clamp(randi_range(0,grid.size()),0,grid.size() - (ponds[i][0].size() + 1)),clamp(randi_range(0,grid[0].size()),0,grid[0].size() - (ponds[i].size() + 1)))
-		for ponds_y in range(ponds[i].size()):
-			for ponds_x in range(ponds[i][ponds_y].size()):
+		var j = randi_range(1,ponds.size() - 1)
+		print(j)
+		var pond_pos = Vector2i(clamp(randi_range(0,grid.size()),0,grid.size() - (ponds[j][0].size() + 1)),clamp(randi_range(0,grid[0].size()),0,grid[0].size() - (ponds[j].size() + 1)))
+		for ponds_y in range(ponds[j].size()):
+			for ponds_x in range(ponds[j][ponds_y].size()):
 				var gy = pond_pos.y + ponds_y
 				var gx = pond_pos.x + ponds_x
-				if gy <= grid.size() and gx <= grid[0].size() and ponds_y <= ponds[i].size() and ponds_x <= ponds[i][ponds_y].size():
-					grid[gy][gx] = ponds[i][ponds_y][ponds_x]
+				if gy <= grid.size() and gx <= grid[0].size() and ponds_y <= ponds[j].size() and ponds_x <= ponds[j][ponds_y].size():
+					grid[gy][gx] = ponds[j][ponds_y][ponds_x]
 	for map_y in range(grid.size()):
 		for map_x in range(grid[map_y].size()):
 			var cell_pos = Vector2i(map_x,map_y)
@@ -100,6 +103,9 @@ func load_game():
 			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 				continue
 			new_objects.set(i,node_data[i])
+		if "is_growing" in node_data and "growing_time" in node_data:
+			new_objects.is_growing = node_data["is_growing"]
+			new_objects.growing_time = node_data["growing_time"]
 		if "seed" in node_data:
 			Global.seed = int(node_data["seed"])
 			seed(int(node_data["seed"]))
