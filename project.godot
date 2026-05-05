@@ -19,10 +19,18 @@ config/icon="res://icon.svg"
 
 Global="*uid://qlat5hf6iltl"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [global_group]
 
 player=""
 persist=""
+
+[gui]
+
+theme/custom_font="uid://bt4y8ccle4ob6"
 
 [input]
 
