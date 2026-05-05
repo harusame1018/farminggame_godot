@@ -45,6 +45,10 @@ func init_game():
 		grid.append([])
 		for x in range(128):
 			grid[y].append(1)
+	for tree in range(60):
+		var tree_pos = Vector2i(randi_range(0,grid[0].size() - 1),randi_range(0,grid.size() - 1))
+		print(tree_pos)
+		grid[tree_pos.y][tree_pos.x] = 2
 	var number_of_pond = int(randi_range(1,grid[0].size() / ponds[0].size()))
 	print(number_of_pond)
 	for i in range(number_of_pond):
@@ -65,6 +69,9 @@ func init_game():
 					$ground.set_cell(cell_pos,1,Vector2i(1,0))
 				1:
 					$ground.set_cell(cell_pos,1,Vector2i(0,0))
+				2:
+					$ground.set_cell(cell_pos,1,Vector2i(0,0))
+					$tree.set_cell(cell_pos,0,Vector2i(0,0))
 func save_game():
 	var save_file = FileAccess.open("user://savegame.save",FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("persist")
