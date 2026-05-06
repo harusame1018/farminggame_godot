@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 var item_scenes = {
 	"apple": preload("res://scene/item_view/apple.tscn"),
-	"carrot": preload("res://scene/item_view/carrot.tscn")
+	"carrot": preload("res://scene/item_view/carrot.tscn"),
+	"tree": preload("res://scene/item_view/tree.tscn")
 }
 
 @export var carrot_item_scene:PackedScene
@@ -28,11 +29,11 @@ func _physics_process(delta: float) -> void:
 		print(cantake_vegetables)
 		var bodies = $Area2D.get_overlapping_areas()
 		for body in bodies:
-			print(body.name)
-			if body.name in cantake_vegetables:
+			print(body.self_name)
+			if body.is_in_group("vegetables"):
 				for i in range(inventory.size()):
 					if inventory[i] == "empty":
-						inventory[i] = body.name
+						inventory[i] = body.self_name
 						body.queue_free()
 						print(inventory)
 						break

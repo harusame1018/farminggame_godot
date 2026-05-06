@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var tree_scene:PackedScene
+
 var load_count = 0
 var grid = []
 var ponds = {
@@ -45,7 +47,7 @@ func init_game():
 		grid.append([])
 		for x in range(128):
 			grid[y].append(1)
-	for tree in range(60):
+	for tree in range(512):
 		var tree_pos = Vector2i(randi_range(0,grid[0].size() - 1),randi_range(0,grid.size() - 1))
 		print(tree_pos)
 		grid[tree_pos.y][tree_pos.x] = 2
@@ -70,8 +72,11 @@ func init_game():
 				1:
 					$ground.set_cell(cell_pos,1,Vector2i(0,0))
 				2:
+					var tree_instantiate = tree_scene.instantiate()
 					$ground.set_cell(cell_pos,1,Vector2i(0,0))
-					$tree.set_cell(cell_pos,0,Vector2i(0,0))
+					$tree2.add_child(tree_instantiate)
+					tree_instantiate.global_position = cell_pos * Vector2i(64,64)
+					#$tree.set_cell(cell_pos,0,Vector2i(0,0))
 func save_game():
 	var save_file = FileAccess.open("user://savegame.save",FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("persist")

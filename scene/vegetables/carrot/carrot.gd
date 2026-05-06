@@ -3,6 +3,7 @@ extends Area2D
 @onready var sprite = $Carrot
 @export var growing_image:Texture
 
+var self_name = "carrot"
 var is_growing = false
 var growing_time = 0.0
 # Called when the node enters the scene tree for the first time.

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dtny3w6sic1rq"]
+
+[ext_resource type="Texture2D" uid="uid://c7mbvb4oruiss" path="res://assets/images/tree.png" id="1_xfeyi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hqisk"]
+font_size = 32
+
+[node name="Control" type="Control" unique_id=387066366]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="." unique_id=2140504704]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -6.0
+offset_right = 109.0
+offset_bottom = 42.0
+text = "原木"
+label_settings = SubResource("LabelSettings_hqisk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=201926450]
+position = Vector2(1, 17)
+texture = ExtResource("1_xfeyi")
