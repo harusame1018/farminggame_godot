@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://mj772txl3r3v" path="res://scene/game/game.gd" id="1_tr56l"]
 [ext_resource type="PackedScene" uid="uid://dwtwkxlmc4iym" path="res://scene/tree/tree.tscn" id="2_5nn1g"]
 [ext_resource type="PackedScene" uid="uid://dp3u3hfl3yml2" path="res://scene/apple/apple.tscn" id="2_pw1yp"]
-[ext_resource type="Texture2D" uid="uid://c7mbvb4oruiss" path="res://assets/images/tree.png" id="3_0tn4t"]
+[ext_resource type="Texture2D" uid="uid://b5t64v0enhcwv" path="res://assets/images/tree.png" id="3_0tn4t"]
 [ext_resource type="PackedScene" uid="uid://n476y84osk76" path="res://scene/vegetables/carrot/carrot.tscn" id="3_l2vx3"]
 [ext_resource type="Texture2D" uid="uid://citr4qddqsbq8" path="res://assets/images/tilemap.png" id="4_82mss"]
 

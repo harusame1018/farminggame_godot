@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dcgvao2jrigja"]
+
+[ext_resource type="Texture2D" uid="uid://dm05u3wmqk4ht" path="res://assets/images/carrot.png" id="1_4pq30"]
+
+[node name="carrot" type="Sprite2D" unique_id=112789271]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_4pq30")

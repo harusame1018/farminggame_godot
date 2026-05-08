@@ -13,6 +13,7 @@ signal exclude_to_take
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+var isopen_inventory = false
 var inventory = []
 var cantake_vegetables = []
 func _ready() -> void:
@@ -36,9 +37,14 @@ func _physics_process(delta: float) -> void:
 						inventory[i] = body.self_name
 						body.queue_free()
 						print(inventory)
+						exclude_cantake_vegetables(body.self_name)
 						break
 				break
-
+	if Input.is_action_just_pressed("openinventory"):
+		if isopen_inventory:
+			$Control/inventory.hide()
+		else:
+			$Control/inventory.show()
 	var direction := Input.get_axis("move_left", "move_right")
 	var updown_direction := Input.get_axis("move_up","move_down")
 	if direction or updown_direction:
@@ -65,7 +71,8 @@ func add_cantake_vegetables(obj):
 	print(cantake_vegetables)
 func exclude_cantake_vegetables(obj):
 	for cantakeobj in $Control/cantake.get_children():
-		if cantakeobj.name == obj:
+		print(cantakeobj.name)
+		if obj in cantakeobj.name:
 			cantakeobj.queue_free()
 			print(cantake_vegetables)
 			return
