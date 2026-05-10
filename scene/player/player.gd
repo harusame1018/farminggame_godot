@@ -22,6 +22,20 @@ const JUMP_VELOCITY = -400.0
 var isopen_inventory = false
 var inventory = []
 var cantake_vegetables = []
+
+func _enter_tree() -> void:
+	await get_tree().create_timer(0.1).timeout
+	for i in range(inventory.size()):
+		if inventory[i] == "empty":
+			continue
+		else:
+			if inventory[i] in inventory_scenes:
+				var inventory_scene_instantiate = inventory_scenes[inventory[i]].instantiate()
+				inventory_node.add_child(inventory_scene_instantiate)
+			else:
+				var empty_instantiate = inventory_scenes["empty"].instantiate()
+				inventory_node.add_child(empty_instantiate)
+
 func _ready() -> void:
 	ready_to_take.connect(cantake)
 	exclude_to_take.connect(exclude_take)
@@ -96,7 +110,8 @@ func save():
 		"filename":get_scene_file_path(),
 		"pos_x":global_position.x,
 		"pos_y":global_position.y,
-		"seed":Global.seed
+		"seed":Global.seed,
+		"inventory":inventory
 	}
 	return save_dict
 	

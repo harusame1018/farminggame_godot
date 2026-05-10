@@ -118,6 +118,8 @@ func load_game():
 		if "is_growing" in node_data and "growing_time" in node_data:
 			new_objects.is_growing = node_data["is_growing"]
 			new_objects.growing_time = node_data["growing_time"]
+		if "inventory" in node_data:
+			new_objects.inventory = node_data["inventory"]
 		if "seed" in node_data:
 			Global.seed = int(node_data["seed"])
 			seed(int(node_data["seed"]))
