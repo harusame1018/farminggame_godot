@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://2xua13xjy2ql"]
 
 [ext_resource type="Script" uid="uid://sqd33yf0hhqw" path="res://scene/player/player.gd" id="1_v7pse"]
-[ext_resource type="PackedScene" uid="uid://dcgvao2jrigja" path="res://scene/inventory/carrot.tscn" id="2_cm2cf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7pse"]
 size = Vector2(52, 44)
@@ -81,14 +80,12 @@ offset_top = 17.0
 offset_right = 518.0
 offset_bottom = 308.0
 
-[node name="inventory" type="HBoxContainer" parent="Control/inventory" unique_id=1669568357]
+[node name="inventory" type="FlowContainer" parent="Control/inventory" unique_id=1697590341]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
-offset_left = -401.0
-offset_top = 47.0
-offset_right = 399.0
-offset_bottom = 307.0
-theme_override_constants/separation = 300
-
-[node name="carrot" parent="Control/inventory/inventory" unique_id=112789271 instance=ExtResource("2_cm2cf")]
-
-[node name="carrot2" parent="Control/inventory/inventory" unique_id=362255794 instance=ExtResource("2_cm2cf")]
+offset_left = -379.0
+offset_top = 71.0
+offset_right = 376.0
+offset_bottom = 103.0
+theme_override_constants/h_separation = 80
+theme_override_constants/v_separation = 32

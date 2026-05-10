@@ -6,7 +6,13 @@ var item_scenes = {
 	"tree": preload("res://scene/item_view/tree.tscn")
 }
 
+var inventory_scenes = {
+	"carrot": preload("res://scene/inventory/carrot.tscn"),
+	"empty": preload("res://scene/inventory/empty.tscn"),
+}
+
 @export var carrot_item_scene:PackedScene
+@onready var inventory_node = $Control/inventory/inventory
 signal ready_to_take
 signal exclude_to_take
 
@@ -35,6 +41,12 @@ func _physics_process(delta: float) -> void:
 				for i in range(inventory.size()):
 					if inventory[i] == "empty":
 						inventory[i] = body.self_name
+						if body.self_name in inventory_scenes:
+							var inventory_scene_instantiate = inventory_scenes[body.self_name].instantiate()
+							inventory_node.add_child(inventory_scene_instantiate)
+						else:
+							var empty_instantiate = inventory_scenes["empty"].instantiate()
+							inventory_node.add_child(empty_instantiate)
 						body.queue_free()
 						print(inventory)
 						exclude_cantake_vegetables(body.self_name)
@@ -43,8 +55,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("openinventory"):
 		if isopen_inventory:
 			$Control/inventory.hide()
+			isopen_inventory = false
 		else:
 			$Control/inventory.show()
+			isopen_inventory = true
 	var direction := Input.get_axis("move_left", "move_right")
 	var updown_direction := Input.get_axis("move_up","move_down")
 	if direction or updown_direction:

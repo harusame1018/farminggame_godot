@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://l0s4u5f5up5m"]
+
+[ext_resource type="Texture2D" uid="uid://b0n4psabbanw3" path="res://assets/images/empty.png" id="1_2n6ln"]
+
+[node name="empty" type="TextureRect" unique_id=1373631305]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_2n6ln")
